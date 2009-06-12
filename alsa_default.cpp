@@ -123,8 +123,8 @@ static alsa_handle_t _defaultsIn = {
     format      : SND_PCM_FORMAT_S16_LE, // AudioSystem::PCM_16_BIT
     channels    : 1,
     sampleRate  : AudioRecord::DEFAULT_SAMPLE_RATE,
-    latency     : 250000, // Desired Delay in usec
-    bufferSize  : 2048, // Desired Number of samples
+    latency     : 20000, // Desired Delay in usec
+    bufferSize  : 160, // Desired Number of samples
     mmap        : 0,
     modPrivate  : 0,
 };
