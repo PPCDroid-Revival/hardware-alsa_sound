@@ -1192,6 +1192,9 @@ ALSAMixer::ALSAMixer()
                       info->name,
                       mixerMasterProp[i].propDefault);
 
+#ifdef __powerpc__
+	if ( mMixer[i] != NULL )
+#endif
         for (snd_mixer_elem_t *elem = snd_mixer_first_elem(mMixer[i]);
              elem;
              elem = snd_mixer_elem_next(elem)) {
@@ -1232,6 +1235,9 @@ ALSAMixer::ALSAMixer()
                           info->name,
                           mixerProp[j][i].propDefault);
 
+#ifdef __powerpc__
+	    if ( mMixer[i] != NULL )
+#endif
             for (snd_mixer_elem_t *elem = snd_mixer_first_elem(mMixer[i]);
                  elem;
                  elem = snd_mixer_elem_next(elem)) {
