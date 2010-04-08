@@ -400,7 +400,11 @@ status_t ALSAStreamOps::set(int      format,
             break;
 
         case AudioSystem::PCM_16_BIT:
+#ifdef __powerpc__
+            mDefaults->format = SND_PCM_FORMAT_S16_BE;
+#else
             mDefaults->format = SND_PCM_FORMAT_S16_LE;
+#endif
             break;
 
         case AudioSystem::PCM_8_BIT:

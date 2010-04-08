@@ -10,6 +10,11 @@ ifeq ($(strip $(BOARD_USES_ALSA_AUDIO)),true)
   include $(CLEAR_VARS)
 
   LOCAL_ARM_MODE := arm
+
+  ifeq ($(TARGET_ARCH),ppc)
+    LOCAL_CFLAGS += -D__powerpc__
+  endif
+
   LOCAL_CFLAGS := -D_POSIX_SOURCE
   LOCAL_WHOLE_STATIC_LIBRARIES := libasound
 
