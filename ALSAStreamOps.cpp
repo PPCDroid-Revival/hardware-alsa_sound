@@ -131,7 +131,11 @@ status_t ALSAStreamOps::set(int      *format,
                 break;
 
             case AudioSystem::PCM_16_BIT:
+#ifndef __powerpc__
                 iformat = SND_PCM_FORMAT_S16_LE;
+#else
+                iformat = SND_PCM_FORMAT_S16_BE;
+#endif
                 break;
 
             case AudioSystem::PCM_8_BIT:
@@ -151,6 +155,7 @@ status_t ALSAStreamOps::set(int      *format,
             switch(iformat) {
                 default:
                 case SND_PCM_FORMAT_S16_LE:
+                case SND_PCM_FORMAT_S16_BE:
                     *format = AudioSystem::PCM_16_BIT;
                     break;
                 case SND_PCM_FORMAT_S8:
